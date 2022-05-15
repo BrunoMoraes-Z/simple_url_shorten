@@ -26,6 +26,7 @@ class Config {
     if (response.statusCode == 200) {
       return Config.of(response.body);
     }
+    return null;
   }
 
   String parse(List<String> params) {

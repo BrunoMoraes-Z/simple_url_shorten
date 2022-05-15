@@ -16,16 +16,18 @@ void main() async {
   await startServer();
 }
 
-Future<HttpServer> startServer() async {
+Future<HttpServer> startServer({String raw = ''}) async {
   String url = Env.get('JSON_URL', '');
 
   if (url.isNotEmpty) {
     config = await Config.fromUrl(url);
+  } else {
+    config = Config.of(raw);
   }
 
   final app = Alfred(
     onNotFound: (req, res) async {
-      await res.redirect(Uri.parse(config!.notFound));
+      await res.redirect(Uri.parse(config!.notFound), status: 301);
     },
   );
 

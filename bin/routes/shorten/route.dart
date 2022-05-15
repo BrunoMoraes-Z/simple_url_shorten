@@ -6,10 +6,9 @@ import '../../models/config.dart';
 
 class ShortenService {
   static route(Alfred server) {
-
     server.get('/*', (req, res) async {
       var params = req.uri.pathSegments;
-      await res.redirect(Uri.parse(config!.parse(params)));
+      await res.redirect(Uri.parse(config!.parse(params)), status: 301);
     });
 
     server.put('/update/:key', (req, res) async {
