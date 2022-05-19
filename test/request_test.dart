@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
@@ -67,5 +69,12 @@ void main() {
     var response = await get('/clips/musics/track1');
     expect(response.statusCode, 200);
     expect(response.headers['set-cookie'], contains('.youtube.com'));
+  });
+
+  test('[09] -» Dump', () async {
+    var response = await get('/dump');
+    expect(response.statusCode, 200);
+    var body = json.decode(response.body);
+    expect(body, isList);
   });
 }

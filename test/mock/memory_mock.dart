@@ -14,6 +14,11 @@ class MemoryMock implements IMemory {
     return uri;
   }
 
+  @override
+  dynamic dump() {
+    return {};
+  }
+
   String? _mem(String key) {
     String? raw;
     switch (key.toLowerCase()) {

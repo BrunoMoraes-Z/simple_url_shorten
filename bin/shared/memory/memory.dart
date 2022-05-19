@@ -22,4 +22,9 @@ class Memory implements IMemory {
   Uri find(String key) {
     return Uri.parse(_memory[key] ?? _memory['/']);
   }
+
+  @override
+  dynamic dump() {
+    return _memory;
+  }
 }
