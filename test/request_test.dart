@@ -1,30 +1,14 @@
-import 'dart:convert';
-
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 import '../bin/server.dart';
 import 'package:http/http.dart' as http;
 
+import 'mock/memory_mock.dart';
+
 void main() {
   setUpAll(() async {
-    await startServer(
-      raw: json.encode({
-        "not_found": "https://www.google.com/",
-        "default": {"discord": "https://discordapp.com/"},
-        "sections": {
-          "videos": {
-            "music": "https://www.youtube.com/watch?v=Xsr0i91VH-0",
-            "clicp": "https://www.youtube.com/watch?v=TO-_3tck2tg"
-          },
-          "clips": {
-            "musics": {
-              "track1": "https://www.youtube.com/watch?v=TO-_3tck2tg",
-            }
-          }
-        }
-      }),
-    );
+    await startServer(memory: MemoryMock());
   });
 
   Future<http.Response> get(String path) async {

@@ -1,6 +1,9 @@
 import 'dart:io';
 
-import '../../models/config.dart';
+import '../database/connector.dart';
+import '../memory/i_memory.dart';
+import '../memory/memory.dart';
 
 String baseDir = Directory.fromUri(Platform.script).parent.parent.path;
-Config? config;
+Connector? connector;
+IMemory imemory = Memory();
