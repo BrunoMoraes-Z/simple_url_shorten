@@ -16,7 +16,7 @@ class Connector {
 
   static Future<Connector?> connect() async {
     String database = Env.get('PG_DATABASE', '');
-    int port = Env.get('PG_PORT', 0);
+    int port = int.parse(Env.get('PG_PORT', 0));
     String username = Env.get('PG_USERNAME', '');
     String password = Env.get('PG_PASSWORD', '');
     String host = Env.get('PG_HOST', '');
